@@ -8,12 +8,12 @@ VescUart::VescUart(uint32_t timeout_ms) : _TIMEOUT(timeout_ms) {
 	nunchuck.upperButton  	= false;
 }
 
-void VescUart::setSerialPort(Stream* port)
+void VescUart::setSerialPort( SERIAL_PORT_TYPE* port)
 {
 	serialPort = port;
 }
 
-void VescUart::setDebugPort(Stream* port)
+void VescUart::setDebugPort( SERIAL_PORT_TYPE* port)
 {
 	debugPort = port;
 }

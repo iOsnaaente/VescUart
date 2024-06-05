@@ -6,6 +6,22 @@
 #include "buffer.h"
 #include "crc.h"
 
+// When using Arduino boards 
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_MEGA2560) 
+  #include <SoftwareSerial.h>
+  #define SERIAL_PORT_TYPE SoftwareSerial 
+// When using ESP32 or ESP8266 boards 
+#elif defined(ESP32) || defined(ESP8266)
+  #define SERIAL_PORT_TYPE HardwareSerial
+// When using Teensy 4.0 board 
+#elif defined( __IMXRT1062__ ) 
+  #define SERIAL_PORT_TYPE HardwareSerialIMXRT 
+// Other boards can be defined below
+#else 
+  #define SERIAL_PORT_TYPE HardwareSerial 
+#endif
+ 
+ 
 class VescUart
 {
 
